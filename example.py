@@ -23,14 +23,13 @@ G = ig.Graph.Tree(n=n, children=3);
 opt = louvain.Optimiser();
 
 # Find communities using CPM
-p_cpm = opt.find_partition(G, partition_class=louvain.CPMVertexPartition,
-    resolution=.1);
+p_cpm = opt.find_partition(G, partition_class=louvain.CPMVertexPartition, resolution=.1);
 # Find communities using significance
 p_sig = opt.find_partition(G, louvain.SignificanceVertexPartition);
 # Find communities using modularity
 p_mod = opt.find_partition(G, louvain.ModularityVertexPartition);
 # Find communities using Reichardt and Bornholdt model
-p_rbc = opt.find_partition(G, louvain.RBConfigurationVertexPartition);
+p_rbc = opt.find_partition(G, louvain.RBConfigurationVertexPartition, resolution=.1);
 
 # Determine similarities between the three different partitions
 f.writelines('NMI(mod, cpm)={0}\n'.format(p_mod.similarity(p_cpm)));
