@@ -1,5 +1,0 @@
-NMI(mod, cpm)=0.721348564199
-NMI(mod, sig)=0.726048396732
-NMI(sig, cpm)=0.993215194805
-Max Modularity=0.449158480846
-Max Significance=968.384467472

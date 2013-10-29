@@ -21,6 +21,7 @@ n = 200;
 G = ig.Graph.Tree(n=n, children=3);
 # Initialise the optimiser, using default settings
 opt = louvain.Optimiser();
+
 # Find communities using CPM
 p_cpm = opt.find_partition(G, partition_class=louvain.CPMVertexPartition,
     resolution=.1);
@@ -28,6 +29,8 @@ p_cpm = opt.find_partition(G, partition_class=louvain.CPMVertexPartition,
 p_sig = opt.find_partition(G, louvain.SignificanceVertexPartition);
 # Find communities using modularity
 p_mod = opt.find_partition(G, louvain.ModularityVertexPartition);
+# Find communities using Reichardt and Bornholdt model
+p_rbc = opt.find_partition(G, louvain.RBConfigurationVertexPartition);
 
 # Determine similarities between the three different partitions
 f.writelines('NMI(mod, cpm)={0}\n'.format(p_mod.similarity(p_cpm)));
@@ -42,6 +45,7 @@ G['layout'] = G.layout_auto();
 plot_graph(G, 'output/comm_cpm.pdf', p_cpm);
 plot_graph(G, 'output/comm_mod.pdf', p_mod);
 plot_graph(G, 'output/comm_sig.pdf', p_sig);
+plot_graph(G, 'output/comm_rbc.pdf', p_rbc);
 
 # Find all resolution values at which optimal partition
 # changes using bisectioning.

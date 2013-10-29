@@ -65,8 +65,7 @@ class Optimiser:
                          default constructor of partition_class."""
     # If there is an initial partition, use it
     if not initial_partition:
-      partition = partition_class(graph=graph,
-          membership=range(graph.vcount()), **kwargs);
+      partition = partition_class(graph=graph, membership=range(graph.vcount()), **kwargs);
       logging.debug('Use default partition (all nodes in own community)');
     else:
       partition = initial_partition;
