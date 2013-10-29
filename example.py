@@ -16,7 +16,7 @@ def plot_graph(G, file, partition):
 f = open('output.txt', 'wb');
 
 # Use n nodes in this example
-n = 50;
+n = 200;
 # Generate some example graph (a tree in this case)
 G = ig.Graph.Tree(n=n, children=3);
 # Initialise the optimiser, using default settings
