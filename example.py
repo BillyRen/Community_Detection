@@ -18,7 +18,7 @@ f = open('output.txt', 'wb');
 # Use n nodes in this example
 n = 200;
 # Generate some example graph (a tree in this case)
-G = ig.Graph.Tree(n=n, children=3);
+G = ig.Graph.Tree(n=n, children=5);
 # Initialise the optimiser, using default settings
 opt = louvain.Optimiser();
 
@@ -29,7 +29,7 @@ p_sig = opt.find_partition(G, louvain.SignificanceVertexPartition);
 # Find communities using modularity
 p_mod = opt.find_partition(G, louvain.ModularityVertexPartition);
 # Find communities using Reichardt and Bornholdt model
-p_rbc = opt.find_partition(G, louvain.RBConfigurationVertexPartition, resolution=.1);
+p_rbc = opt.find_partition(G, louvain.RBConfigurationVertexPartition, resolution=1);
 
 # Determine similarities between the three different partitions
 f.writelines('NMI(mod, cpm)={0}\n'.format(p_mod.similarity(p_cpm)));
