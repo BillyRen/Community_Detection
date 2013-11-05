@@ -19,6 +19,7 @@ f = open('output.txt', 'wb');
 n = 200;
 # Generate some example graph (a tree in this case)
 G = ig.Graph.Tree(n=n, children=5);
+#G = ig.GraphBase.Growing_Random(50, 150);
 # Initialise the optimiser, using default settings
 opt = louvain.Optimiser();
 
